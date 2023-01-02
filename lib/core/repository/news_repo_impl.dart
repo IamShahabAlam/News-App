@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:get/get.dart';
 import 'package:getx_news_app/core/model/article.dart';
 import 'package:getx_news_app/core/model/news_response_model.dart';
@@ -9,12 +8,14 @@ import 'package:getx_news_app/service/http_service_impl.dart';
 
 class NewsRepoImpl implements NewsRepo {
  
-  HttpService _httpService;  // involving http Service to get response from server
+   late HttpService _httpService;  // involving http Service to get response from server
+
 
   NewsRepoImpl(){
-    _httpService = Get.put(HttpServiceImpl());
+    _httpService = Get.put<HttpService>(HttpServiceImpl());
     _httpService.init();
   }
+
 
   @override
   Future<List<Article>> getNewsHeadline() async {
